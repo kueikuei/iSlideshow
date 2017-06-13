@@ -1,0 +1,46 @@
+<!DOCTYPE html> 
+<html>
+<head>
+	<meta charset=utf-8" />
+	<title>Dialogs</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="./jquery.mobile/jquery.mobile-1.4.0.min.css" />
+	<script src="./jquery.mobile/jquery-2.1.0.min.js"></script>
+	<script src="./jquery.mobile/jquery.mobile-1.4.0.min.js"></script>
+</head>
+
+<body>
+<!-- Start of first page -->
+<div data-role="page" id="foo">
+
+	<div data-role="header">
+		<h1>第一個頁面標題</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p>這是第一個頁面！</p>
+		<p><a href="#bar" data-rel="dialog">以對話框方式開啟</a></p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>第一個頁面標尾</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+
+<!-- Start of second page -->
+<div data-role="page" id="bar">
+
+	<div data-role="header">
+		<h1>第二個頁面標題</h1>
+	</div><!-- /header -->
+
+	<div role="main" class="ui-content">
+		<p>這是第二個頁面，是用對話框方式開啟的！</p>
+	</div><!-- /content -->
+
+	<div data-role="footer">
+		<h4>第二個頁面標尾</h4>
+	</div><!-- /footer -->
+</div><!-- /page -->
+</body>
+</html>

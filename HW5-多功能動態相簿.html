@@ -1,0 +1,133 @@
+<!-- =========================-->
+<!-- D3基本樣板			      -->
+<!-- =========================-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		<!--初始套件載入設定-->
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="jquerym/jquery.mobile/jquery.mobile-1.4.5.min.css"></link>
+		<script src="jquerym/jquery.mobile/jquery-2.1.4.min.js"></script>
+		<script src="jquerym/jquery.mobile/jquery.mobile-1.4.5.min.js"></script>
+		<!--初始套件載入設定-->
+		<!--CSS設定-->
+		<style type="text/css">
+			#desc
+			{
+				text-align: center;
+				padding: 10px;
+			}
+			a{
+				width:70px;
+			}
+		</style>
+		<!--CSS設定-->
+		
+		<script>
+		
+			function Jump2One(){	
+				document.getElementById('desc').innerHTML = desc[0];
+				img.src = 'images_NTU/'+0+'.jpg';
+				context.drawImage(img, 30, 0);		
+			};
+			
+			function Before(){
+				--count;
+				--count;
+				if (count >= 0)
+				{
+					count = count % desc.length;
+				}
+				else
+				{
+					count = Math.abs(count) % desc.length;
+					count = desc.length - count;
+				}
+		
+				document.getElementById('desc').innerHTML = desc[count];
+				img.src = 'images_NTU/'+count+'.jpg';
+				context.drawImage(img, 30, 0);
+			};
+			function Next(){
+				document.getElementById('desc').innerHTML = desc[count];
+				img.src = 'images_NTU/'+count+'.jpg';
+				context.drawImage(img, 30, 0);
+			};
+			function Jump2Final(){
+				document.getElementById('desc').innerHTML = desc[5];
+				img.src = 'images_NTU/'+5+'.jpg';
+				context.drawImage(img, 30, 0);
+			};
+			
+
+			
+		</script>
+		
+		
+	</head>
+	
+	<body>
+		<div data-role="page">
+			<div data-role="header" id="desc">
+				<h1>標題</h1>
+			</div>
+			<div role="main" class="ui-content">
+				<canvas id="photos" width="400" height="265"></canvas>
+				
+				<script>
+					var count = 0;
+					var max = 6;
+					var fade = 0;
+					var desc = ['傅園', '總圖書館', '醉月湖', '椰林大道', '傅鐘', '校門'];
+					
+					var canvasObj = document.getElementById('photos');
+					var context = canvasObj.getContext('2d');
+
+					var img = new Image();
+					
+					function drawPhoto()
+					{
+					img.src = 'images_NTU/'+count+'.jpg';
+					img.onload = function(){
+						count = (count + 1 ) % max;
+						fade = 0;
+						fadeIn();
+					}
+						document.getElementById('desc').innerHTML = desc[count];
+						return count;
+					}
+					
+					function fadeIn()
+					{
+						context.globalAlpha = fade / 20;
+						if (fade < 20)
+						{
+							setTimeout('fadeIn()', 50);
+							++fade;
+						}
+						context.drawImage(img, 30, 0);
+					}
+					
+					setInterval('drawPhoto()', 4000);
+					drawPhoto();
+					
+				</script>
+
+				
+			</div>
+			<div data-role="footer" align="center" data-role="controlgroup" data-type="horizontal">
+				<a data-role='button' onclick="Jump2One();" data-icon="carat-u">第一張</a>
+				<a data-role='button' onclick="Before();" data-icon="carat-l">前一張</a>
+				<a data-role='button' onclick="Next();" data-icon="carat-r">下一張</a>
+				<a data-role='button' onclick="Jump2Final();" data-icon="carat-d">最後一張</a>
+			</div>
+
+		</div>
+	</body>
+
+</html></body>
+
+</html>

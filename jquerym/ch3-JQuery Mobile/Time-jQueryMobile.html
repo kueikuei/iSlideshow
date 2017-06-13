@@ -1,0 +1,64 @@
+<!-- 
+****************************************
+JavaScipt-時鐘程式
+****************************************
+
+****************************************
+-->
+
+<!DOCTYPE html>
+
+<html lang="en">
+	<head>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js" charset="utf-8"></script>	
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="./jquery.mobile/jquery.mobile-[version].min.css" />
+		<script src="./jquery.mobile/jquery-[version].min.js"></script>
+		<script src="./jquery.mobile/jquery.mobile-[version].min.js"></script>
+		<style>
+			body{
+				background-color:gray;
+			}
+			
+			#clock{ <!--id用# -->
+				padding-top:20%;
+				font-size:40pt;
+				font-family:verdana;
+				font-weight:bold;
+				color:white;
+				text-align:center;
+			
+			}
+		</style>
+		<script type="text/javascript">
+			setInterval(function(){
+				var currentTime= new Date();
+				var year=currentTime.getFullYear();
+				var month=currentTime.getMonth()+1;
+				var date=currentTime.getDate();
+				var day=currentTime.getDay();
+				var h = "0"+currentTime.getHours();
+				var m = "0"+currentTime.getMinutes();				
+				var s = "0"+currentTime.getSeconds();
+				//substr()取其中一部分的字串(起點,要抓幾個字)
+				h=h.substr(h.length-2,2);
+				m=m.substr(m.length-2,2);
+				s=s.substr(s.length-2,2);
+				
+				//轉換阿拉伯數字為國字
+				var week=["日","一","二","三","四","五","六"];				
+				var timeStr = year+"/"+month+"/"+date+"("+week[day]+")"+"<br>"+h+":"+m+":"+s;
+				document.getElementById("clock").innerHTML = timeStr;
+			},1000);
+		</script>
+		<title></title>
+
+
+	</head>
+	
+	<body>
+		<div id="clock"></div>
+	</body>
+
+</html>
